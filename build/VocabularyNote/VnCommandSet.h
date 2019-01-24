@@ -1,3 +1,6 @@
+#ifndef _VNCOMMANDSET_H_
+#define _VNCOMMANDSET_H_
+
 /********************************************************************
 Description : 所有指令合集及其索引定义
 time        : 20190120
@@ -25,3 +28,4 @@ private:
 	static map<tstring, int>  m_mapCommand;	
 };
 
+#endif

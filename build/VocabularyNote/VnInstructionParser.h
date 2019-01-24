@@ -1,5 +1,8 @@
+#ifndef _VNINSTRUCTIONPARSER_H_
+#define _VNINSTRUCTIONPARSER_H_
+
 /********************************************************************
-Description :  ‰»Î÷∏¡Ó∑÷Œˆ∆˜
+Description : 
 time        : 20190120
 author      : andy
 *********************************************************************/
@@ -16,3 +19,4 @@ public:
 	VnINSTRUCTIONS Parse(std::tstring);
 };
 
+#endif

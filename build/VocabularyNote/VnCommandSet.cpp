@@ -54,6 +54,6 @@ void CVnCommandSet::Initialize()
 	m_mapCommand.insert(make_pair(L"delete", VnDELETE));
 	m_mapCommand.insert(make_pair(L"view", VnVIEW));
 	m_mapCommand.insert(make_pair(L"modify", VnMODIFY));
-	m_mapCommand.insert(make_pair(L"quit", VnQuit));
-	m_mapCommand.insert(make_pair(L"q", VnQuit));
+	m_mapCommand.insert(make_pair(L"quit", VnQUIT));
+	m_mapCommand.insert(make_pair(L"q", VnQUIT));
 }

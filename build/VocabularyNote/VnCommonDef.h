@@ -1,16 +1,20 @@
+#ifndef _VNCOMMONDEF_H_
+#define _VNCOMMONDEF_H_
+
 /********************************************************************
 Description : 通用较多的头文件定义
 time        : 20190120
 author      : andy
 *********************************************************************/
-#ifndef _VNCOMMONDEF_H_
-#define _VNCOMMONDEF_H_
+
 
 #include <assert.h>
 #include <list>
 #include <map>
 #include <algorithm>
 #include <string>
+
+using namespace std;
 
 #ifndef _UNICODE
 #define tstring string
@@ -42,7 +46,7 @@ typedef enum _COMMAND_SET_INDEX_
 	VnDELETE,
 	VnMODIFY,
 	VnVIEW,
-	VnQuit
+	VnQUIT
 }COMMAND_SET_INDEX;
 
 #endif

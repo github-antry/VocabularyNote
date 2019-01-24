@@ -1,5 +1,8 @@
+#ifndef _VNCOMMAND_QUIT_H_
+#define _VNCOMMAND_QUIT_H_
+
 /********************************************************************
-Description : add 
+Description : Quit 
 time        : 20190120
 author      : andy
 *********************************************************************/
@@ -17,3 +20,4 @@ public:
 	virtual void Run(const struct _INSTRUCTIONS_ &ins) override; 
 };
 
+#endif

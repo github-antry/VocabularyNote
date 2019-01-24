@@ -45,6 +45,12 @@
     <ClInclude Include="VnCommand_Quit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VnIOFileTool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VnVersatileTool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -69,6 +75,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VnCommand_Quit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VnIOFileTool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VnVersatileTool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

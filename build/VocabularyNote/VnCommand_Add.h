@@ -1,3 +1,6 @@
+#ifndef _VNCOMMAND_ADD_H_
+#define _VNCOMMAND_ADD_H_
+
 /********************************************************************
 Description : add 
 time        : 20190120
@@ -15,5 +18,7 @@ public:
 	~CVnAdd(void);
 
 	virtual void Run(const struct _INSTRUCTIONS_ &ins) override; 
+
 };
 
+#endif

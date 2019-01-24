@@ -86,8 +86,11 @@
     <ClInclude Include="VnCommand_Quit.h" />
     <ClInclude Include="VnCommonDef.h" />
     <ClInclude Include="VnInstructionParser.h" />
+    <ClInclude Include="VnIOFileTool.h" />
+    <ClInclude Include="VnVersatileTool.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="VnVersatileTool.cpp" />
     <ClCompile Include="VnCommand.cpp" />
     <ClCompile Include="VnCommandFactory.cpp" />
     <ClCompile Include="VnCommandSet.cpp" />
@@ -95,6 +98,7 @@
     <ClCompile Include="VnCommand_Add.cpp" />
     <ClCompile Include="VnCommand_Quit.cpp" />
     <ClCompile Include="VnInstructionParser.cpp" />
+    <ClCompile Include="VnIOFileTool.cpp" />
     <ClCompile Include="VocabularyNote.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

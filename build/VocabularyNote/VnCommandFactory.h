@@ -1,3 +1,7 @@
+#ifndef _VNCOMMANDFACTORY_H_
+#define _VNCOMMANDFACTORY_H_
+
+
 /********************************************************************
 Description : 操作指令对象创建工厂
 time        : 20190120
@@ -20,3 +24,4 @@ public:
 	CVnCommand* Create(const int& _index);
 };
 
+#endif
