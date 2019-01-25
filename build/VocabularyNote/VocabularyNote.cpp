@@ -13,8 +13,11 @@
 
 using namespace std;
 
+bool g_bExit = false;
+
 int _tmain(int argc, _TCHAR* argv[])
 {
+
 	do
 	{
 		cout<<">>";
@@ -29,9 +32,15 @@ int _tmain(int argc, _TCHAR* argv[])
 		CVnCommandFactory factory;
 		CVnCommand* pCmd = factory.Create(ins.index);
 
+		if(pCmd == nullptr)
+		{
+			cout<<"Invalid Input!"<<endl;
+			continue;
+		}
+
 		pCmd->Run(ins);
 
-	}while(true);
+	}while(!g_bExit);
 
 	return 0;
 }

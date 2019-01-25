@@ -37,7 +37,7 @@ CVnCommand *CVnCommandFactory::Create(const int &_index)
 		pCmd = new CVnQuit();
 	};break;
 	default:
-		assert(false);
+		/*assert(false)*/;
 	}
 
 	return pCmd;

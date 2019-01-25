@@ -2,6 +2,12 @@
 #include "VnCommonDef.h"
 #include "VnIOFileTool.h"
 #include "VnVersatileTool.h"
+#include "include/AwOSTool.h"
+#include "include/testLib.h"
+
+#pragma comment(lib, "AwUltilities.lib")
+#pragma comment(lib, "test.lib")
+
 
 using namespace std;
 
@@ -16,10 +22,17 @@ CVnAdd::~CVnAdd(void)
 
 void CVnAdd::Run(const struct _INSTRUCTIONS_ &ins)
 {
-	string vnFile = "D:\\VacabularyNote.DAT";
-	
-	for(auto itr=ins.lstParam.begin(); itr!=ins.lstParam.end(); ++itr)
+	TestDLL(2);
+
+	string vnFile;
+	int nRet;// = GetAwOSToolInstance()->GetCurrentWorkDir(vnFile);;
+	if(nRet >= 0)
 	{
-		CIOFileTool::AppendByLine(vnFile, CVersatileTool::wstring2string(itr->option));
+		vnFile += "\\VacabularyNote.DAT";
+
+		for(auto itr=ins.lstParam.begin(); itr!=ins.lstParam.end(); ++itr)
+		{
+			CIOFileTool::AppendByLine(vnFile, CVersatileTool::wstring2string(itr->option));
+		}
 	}
 }
