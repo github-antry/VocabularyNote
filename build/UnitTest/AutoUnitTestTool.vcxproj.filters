@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\AutoUnitTestTool.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{7a2c1cdf-951a-4a36-974b-9d4fece91e93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{b94d0cc2-ad9c-471d-bf67-95234af38ef3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Class Cases">
+      <UniqueIdentifier>{b97e2c9f-8819-40fd-9ca0-68648ab77312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Function Cases">
+      <UniqueIdentifier>{983f02ac-a677-4c31-b688-7548db237c37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{17dc6056-3bd1-47e2-aa5c-941d8d819ea9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header Files\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\UnitTestCaseBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\UnitTestResultMacro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\AutoUnitTestTool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\AutoUnitTestToolDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\AutoTestCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\AutoTestShell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\CxAutoClean.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Class Cases\UnitTestCaseByClass.h">
+      <Filter>Class Cases</Filter>
+    </ClInclude>
+    <ClInclude Include="Function Cases\UnitTestCaseByMethod.h">
+      <Filter>Function Cases</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source Files\AutoUnitTestTool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\AutoUnitTestToolDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\AutoTestCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\AutoTestShell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\UnitTestCaseBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Class Cases\UnitTestCaseByClass.cpp">
+      <Filter>Class Cases</Filter>
+    </ClCompile>
+    <ClCompile Include="Function Cases\UnitTestCaseByMethod.cpp">
+      <Filter>Function Cases</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AutoUnitTestTool.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
