@@ -2,7 +2,7 @@
 #include "VnCommonDef.h"
 #include "VnIOFileTool.h"
 #include "VnVersatileTool.h"
-#include "include/AwOSTool.h"
+#include "AwOSTool.h"
 
 #pragma comment(lib, "AwUltilities.lib")
 

@@ -18,3 +18,4 @@ public:
 	int TestTempalte(){return PASS;}
 };
 
+ENABLE_CLASS_RUN_TEST(CUnitTestCaseByClass)

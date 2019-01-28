@@ -56,3 +56,4 @@
 #endif
 #endif
 
+#pragma comment(lib, "core.lib")

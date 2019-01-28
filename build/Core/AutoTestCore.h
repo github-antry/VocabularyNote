@@ -4,6 +4,7 @@
 
 #include<list>
 #include<string>
+#include<assert.h>
 
 ///
 /**************************************************************************************************************************
@@ -39,7 +40,14 @@ public:
 
 	static CAutoTestCore* Instance()
 	{
-		return &s_Instance;
+		if(s_pInstance == nullptr)
+		{
+			s_pInstance = new CAutoTestCore();
+		}
+
+		assert(s_pInstance != nullptr);
+
+		return s_pInstance;
 	}
 
 	void InsertTestFunction(std::pair<std::wstring, FUNC> _key_func_pair)
@@ -55,7 +63,7 @@ public:
 	std::unordered_map<std::wstring, bool> Run(ClassMap* _result);
 
 private:
-	static CAutoTestCore s_Instance;
+	static CAutoTestCore* s_pInstance;
 
 
 private:

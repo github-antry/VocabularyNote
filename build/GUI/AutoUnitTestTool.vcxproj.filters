@@ -33,22 +33,10 @@
     <ClInclude Include="Header Files\targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header Files\UnitTestCaseBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\UnitTestResultMacro.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Header Files\AutoUnitTestTool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header Files\AutoUnitTestToolDlg.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\AutoTestCore.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\AutoTestShell.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header Files\CxAutoClean.h">
@@ -68,16 +56,7 @@
     <ClCompile Include="Source Files\AutoUnitTestToolDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source Files\AutoTestCore.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\AutoTestShell.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source Files\stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\UnitTestCaseBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Class Cases\UnitTestCaseByClass.cpp">

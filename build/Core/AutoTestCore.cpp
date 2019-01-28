@@ -1,14 +1,14 @@
-#include "StdAfx.h"
 #include "AutoTestCore.h"
 #include "UnitTestCaseBase.h"
 #include "UnitTestResultMacro.h"
 #include "CxAutoClean.h"
 
 ///
-CAutoTestCore CAutoTestCore::s_Instance;
+CAutoTestCore* CAutoTestCore::s_pInstance = nullptr;
 
 CAutoTestCore::CAutoTestCore(void)
 {
+	CPtrAutoClean<CAutoTestCore> clr(s_pInstance);
 }
 
 CAutoTestCore::~CAutoTestCore(void)
