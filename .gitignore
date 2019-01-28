@@ -35,3 +35,7 @@ build/VocabularyNote/.svn/entries
 build/VocabularyNote/.svn/format
 build/VocabularyNote/.svn/wc.db
 build/VocabularyNote/.svn/wc.db-journal
+*.db
+*.db-journal
+build/.svn/entries
+build/.svn/format
