@@ -70,3 +70,6 @@ build/Win32/Debug/Intermediate/AutoUnitTestTool/rc.read.1.tlog
 build/Win32/Debug/Intermediate/AutoUnitTestTool/rc.write.1.tlog
 build/Win32/Debug/Intermediate/AutoUnitTestTool/vc100.idb
 build/Win32/Debug/Intermediate/AutoUnitTestTool/vc100.pdb
+*.tlog
+*.log
+*.manifest

@@ -4,8 +4,6 @@
 #include "VnVersatileTool.h"
 #include "AwOSTool.h"
 
-#pragma comment(lib, "AwUltilities.lib")
-
 using namespace std;
 
 CVnAdd::CVnAdd(void)

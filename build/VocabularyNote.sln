@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VocabularyNote", "VocabularyNote\VocabularyNote.vcxproj", "{767C2EFD-1F27-439D-9609-264FED06EFF9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AutoUnitTestTool", "UnitTest\AutoUnitTestTool.vcxproj", "{48C4CACE-2447-4766-8045-C47143235A66}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -24,18 +22,6 @@ Global
 		{767C2EFD-1F27-439D-9609-264FED06EFF9}.Release|Win32.ActiveCfg = Release|Win32
 		{767C2EFD-1F27-439D-9609-264FED06EFF9}.Release|Win32.Build.0 = Release|Win32
 		{767C2EFD-1F27-439D-9609-264FED06EFF9}.Release|x64.ActiveCfg = Release|Win32
-		{48C4CACE-2447-4766-8045-C47143235A66}.Debug|Win32.ActiveCfg = Debug|Win32
-		{48C4CACE-2447-4766-8045-C47143235A66}.Debug|Win32.Build.0 = Debug|Win32
-		{48C4CACE-2447-4766-8045-C47143235A66}.Debug|x64.ActiveCfg = Debug|x64
-		{48C4CACE-2447-4766-8045-C47143235A66}.Debug|x64.Build.0 = Debug|x64
-		{48C4CACE-2447-4766-8045-C47143235A66}.release_for_debug|Win32.ActiveCfg = release_for_debug|Win32
-		{48C4CACE-2447-4766-8045-C47143235A66}.release_for_debug|Win32.Build.0 = release_for_debug|Win32
-		{48C4CACE-2447-4766-8045-C47143235A66}.release_for_debug|x64.ActiveCfg = release_for_debug|x64
-		{48C4CACE-2447-4766-8045-C47143235A66}.release_for_debug|x64.Build.0 = release_for_debug|x64
-		{48C4CACE-2447-4766-8045-C47143235A66}.Release|Win32.ActiveCfg = Release|Win32
-		{48C4CACE-2447-4766-8045-C47143235A66}.Release|Win32.Build.0 = Release|Win32
-		{48C4CACE-2447-4766-8045-C47143235A66}.Release|x64.ActiveCfg = Release|x64
-		{48C4CACE-2447-4766-8045-C47143235A66}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

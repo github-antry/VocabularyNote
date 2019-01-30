@@ -52,6 +52,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,6 +91,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="VnCommand_Add.h" />
+    <ClInclude Include="VnCommand_Merge.h" />
     <ClInclude Include="VnCommand_Quit.h" />
     <ClInclude Include="VnCommonDef.h" />
     <ClInclude Include="VnInstructionParser.h" />
@@ -97,6 +99,7 @@
     <ClInclude Include="VnVersatileTool.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="VnCommand_Merge.cpp" />
     <ClCompile Include="VnVersatileTool.cpp" />
     <ClCompile Include="VnCommand.cpp" />
     <ClCompile Include="VnCommandFactory.cpp" />

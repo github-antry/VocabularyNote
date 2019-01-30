@@ -4,6 +4,7 @@
 #include "VnCommonDef.h"
 #include "VnCommand_Add.h"
 #include "VnCommand_Quit.h"
+#include "VnCommand_Merge.h"
 
 CVnCommandFactory::CVnCommandFactory(void)
 {
@@ -26,16 +27,20 @@ CVnCommand *CVnCommandFactory::Create(const int &_index)
 	switch (_index)
 	{
 	case VnADD:
-	{
-		pCmd = new CVnAdd();
-	};	break;
+		{
+			pCmd = new CVnAdd();
+		};	break;
 	case VnDELETE:break;
 	case VnMODIFY:break;
 	case VnVIEW:break;
+	case VnMERGE:
+		{
+			pCmd = new CVnMerge();
+		}break;
 	case VnQUIT:
-	{
-		pCmd = new CVnQuit();
-	};break;
+		{
+			pCmd = new CVnQuit();
+		};break;
 	default:
 		/*assert(false)*/;
 	}

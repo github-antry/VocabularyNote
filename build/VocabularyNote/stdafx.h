@@ -13,3 +13,5 @@
 
 
 // TODO: reference additional headers your program requires here
+#pragma comment(lib, "AwUltilities.lib")
+#pragma comment(lib, "htmlcxx.lib")
