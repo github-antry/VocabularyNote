@@ -363,3 +363,8 @@ void CVnClassification::AddNode(CVnItem *_node)
 {
 	m_lstChild.push_back(_node);
 }
+
+CVnClassification* CVnClassification::MergeAsNew(const CVnClassification& _other)
+{
+	return nullptr;
+}
