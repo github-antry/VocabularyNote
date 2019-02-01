@@ -13,11 +13,11 @@ author      : andy
 
 class CVnItem
 {
-public:
+  public:
 	CVnItem();
 	~CVnItem();
 
-public:
+  public:
 	std::string m_add_date;
 	std::string m_href;
 	std::string m_label;
@@ -25,52 +25,62 @@ public:
 
 class CVnClassification
 {
-public:
+  public:
 	CVnClassification();
 	~CVnClassification();
 
-public:
+  public:
 	std::list<CVnItem *> GetChildren();
 	void AddNode(CVnItem *_node);
 
-public:
+  public:
 	std::string m_add_date;
 	std::string m_last_modified;
 	std::string m_personal_toolbar_folder;
 
 	std::string m_label;
 
-private:
+  private:
 	std::list<CVnItem *> m_lstChild;
 };
 
 class CVnMerge : public CVnCommand
 {
-public:
+  public:
 	CVnMerge(void);
 	virtual ~CVnMerge(void);
 
 	virtual void Run(const struct _INSTRUCTIONS_ &ins) override;
 
-protected:
+  protected:
 	//从文件读入到string里
 	string CVnMerge::readFileIntoString(const char *filename);
 
-	void WriteToHtml();
+	void WriteToHtml(const std::list<CVnClassification *> &lstClassifyResult);
 	void WriteToHtml_Header(ofstream &result);
-	void WriteToHtml_DT_H3(ofstream &result, long add_date,
-												 long last_modified,
-												 bool toolbar_folder,
-												 string text);
+	void WriteToHtml_DT_H3(ofstream &result,
+						   string add_date,
+						   string last_modified,
+						   bool toolbar_folder,
+						   string text);
 	void WriteToHtml_DT_A(ofstream &result,
-												string href,
-												long date,
-												string text);
+						  string href,
+						  string date,
+						  string text);
 	void WriteToHtml_DL_DEGIN(ofstream &result);
 	void WriteToHtml_DL_END(ofstream &result);
 
-private:
-	std::list<CVnClassification *> m_lstClassification;
+	int ParseHtmlString(const string &html,
+						std::list<CVnClassification *> &lstClassification);
+
+	int ParseHtmlFile(const string &file,
+					  std::list<CVnClassification *> &lstClassification);
+
+	void Merge(const std::list<CVnClassification *> &lstClassifyA,
+			   const std::list<CVnClassification *> &lstClassifyB,
+			   std::list<CVnClassification *> &lstClassifyResult);
+
+  private:
 };
 
 #endif
