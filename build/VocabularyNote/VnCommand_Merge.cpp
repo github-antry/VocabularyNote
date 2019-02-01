@@ -82,33 +82,114 @@ string UTF82WCS(const char *szU8)
 
 void CVnMerge::Run(const struct _INSTRUCTIONS_ &ins)
 {
-	string fileA = "E:\\W009_GitHub\\GanttSchedule\\bookmarks_google.html";
-	string fileB = "E:\\W009_GitHub\\GanttSchedule\\bookmarks_google.html";
+	string fileA = "E:\\W009_GitHub\\GanttSchedule\\bookmarks_2019_2_1.html";
+	string fileB = "E:\\W009_GitHub\\GanttSchedule\\bookmarks_2019_2_1.html";
 
-	std::list<CVnClassification *> lstClassifyA;
-	std::list<CVnClassification *> lstClassifyB;
+	std::list<CVnClassification *> lstClassifyA; //need to free memory
+	std::list<CVnClassification *> lstClassifyB; //need to free memory
 	ParseHtmlFile(fileA, lstClassifyA);
-	ParseHtmlFile(fileA, lstClassifyB);
+	ParseHtmlFile(fileB, lstClassifyB);
 
-	std::list<CVnClassification *> lstClassifyResult;
-	Merge(lstClassifyA, lstClassifyB, lstClassifyResult);
+	Mix(lstClassifyA);
+	Mix(lstClassifyB);
 
-	WriteToHtml(lstClassifyResult);
+	WriteToHtml(m_lstResult);
 
 	//std::cout << dom << endl;
 }
 
-void CVnMerge::Merge(const std::list<CVnClassification *> &lstClassifyA,
-					 const std::list<CVnClassification *> &lstClassifyB,
-					 std::list<CVnClassification *> &lstClassifyResult)
+void CVnMerge::Mix(const std::list<CVnClassification *> &lstClassify)
 {
+	for(auto itrClassify=lstClassify.begin(); itrClassify!=lstClassify.end(); ++itrClassify)	
+	{
+		CVnClassification* pClassify = FindInMap(**itrClassify);
+		if(pClassify == nullptr)
+		{
+			pClassify = NewToMap(**itrClassify);
+			m_lstResult.push_back(pClassify);
+		}
+
+		assert(pClassify != nullptr);
+
+		std::list<CVnItem*> lstItem = (*itrClassify)->GetChildren();
+		for(auto itrItem=lstItem.begin(); itrItem!=lstItem.end(); ++itrItem)
+		{
+			if(FindInMap(**itrItem))
+			{
+				continue;
+			}
+			else
+			{
+				CVnItem* pNewItem =  NewToMap(**itrItem);
+				assert(pNewItem != nullptr);
+
+				pClassify->AddNode(pNewItem);
+			}
+		}
+
+	}
+}
+
+CVnItem* CVnMerge::NewToMap(const CVnItem& _item)
+{
+	CVnItem* pItem = new CVnItem;
+	*pItem = _item;
+
+	std::string key = pItem->m_href;
+	transform(key.begin(), key.end(), key.begin(), ::tolower);
+	m_mapItem.insert(std::make_pair(key, pItem));
+
+	return pItem;
+}
+
+bool CVnMerge::FindInMap(const CVnItem &_item)
+{
+	std::string key = _item.m_href;
+	transform(key.begin(), key.end(), key.begin(), ::tolower);
+
+	auto itrFind = m_mapItem.find(key);
+	if(itrFind != m_mapItem.end())
+	{
+		return true;
+	}
+
+	return false;
+}
+
+CVnClassification *CVnMerge::NewToMap(const CVnClassification& _classify)
+{
+	CVnClassification *pClassify = new CVnClassification;
+	pClassify->m_add_date = _classify.m_add_date;
+	pClassify->m_label = _classify.m_label;
+	pClassify->m_last_modified = _classify.m_last_modified;
+	pClassify->m_personal_toolbar_folder = _classify.m_personal_toolbar_folder;
+
+	std::string key = pClassify->m_label;
+	transform(key.begin(), key.end(), key.begin(), ::tolower);
+	m_mapClassify.insert(std::make_pair(key, pClassify));
+
+	return pClassify;
+}
+
+CVnClassification *CVnMerge::FindInMap(const CVnClassification &_classify)
+{
+	std::string key = _classify.m_label;
+	transform(key.begin(), key.end(), key.begin(), ::tolower);
+
+	auto itrFind = m_mapClassify.find(key);
+	if (itrFind != m_mapClassify.end())
+	{
+		return itrFind->second;
+	}
+
+	return nullptr;
 }
 
 int CVnMerge::ParseHtmlFile(const string &file,
 							std::list<CVnClassification *> &lstClassification)
 {
-	string tmp = readFileIntoString(file.c_str());
-	string html = UTF82WCS(tmp.c_str());
+	string html = readFileIntoString(file.c_str());
+	//string html = UTF82WCS(tmp.c_str());
 
 	return ParseHtmlString(html, lstClassification);
 }
@@ -233,7 +314,7 @@ void CVnMerge::WriteToHtml(const std::list<CVnClassification *> &lstClassifyResu
 
 	DL_BEGIN(result)
 	auto itrBookMarkBar = lstClassifyResult.begin();
-	WriteToHtml_DT_H3(result, (*itrBookMarkBar)->m_add_date, (*itrBookMarkBar)->m_last_modified, true, "ÊéÇ©À¸");
+	WriteToHtml_DT_H3(result, (*itrBookMarkBar)->m_add_date, (*itrBookMarkBar)->m_last_modified, true, (*itrBookMarkBar)->m_label);
 
 	DL_BEGIN(result)
 	std::list<CVnItem *> lstItem = (*itrBookMarkBar)->GetChildren();
@@ -258,6 +339,8 @@ void CVnMerge::WriteToHtml(const std::list<CVnClassification *> &lstClassifyResu
 	DL_END(result)
 
 	DL_END(result)
+
+	result.close();
 }
 
 void CVnMerge::WriteToHtml_Header(ofstream &result)
@@ -362,9 +445,4 @@ std::list<CVnItem *> CVnClassification::GetChildren()
 void CVnClassification::AddNode(CVnItem *_node)
 {
 	m_lstChild.push_back(_node);
-}
-
-CVnClassification* CVnClassification::MergeAsNew(const CVnClassification& _other)
-{
-	return nullptr;
 }
