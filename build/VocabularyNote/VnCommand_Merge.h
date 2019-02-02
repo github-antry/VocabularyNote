@@ -103,6 +103,9 @@ protected:
 	CVnClassification* NewToMap(const CVnClassification& _classify);
 	CVnClassification* FindInMap(const CVnClassification& _classify);
 
+	void Format(std::string& _text);
+	void RemoveMark(std::string& _text, const string _mark);
+
   private:
 	std::map<std::string, CVnItem *> m_mapItem;
 	std::map<std::string, CVnClassification*> m_mapClassify;

@@ -88,7 +88,7 @@ void CVnMerge::Run(const struct _INSTRUCTIONS_ &ins)
 	std::list<CVnClassification *> lstClassifyA; //need to free memory
 	std::list<CVnClassification *> lstClassifyB; //need to free memory
 	ParseHtmlFile(fileA, lstClassifyA);
-	ParseHtmlFile(fileB, lstClassifyB);
+	//ParseHtmlFile(fileB, lstClassifyB);
 
 	Mix(lstClassifyA);
 	Mix(lstClassifyB);
@@ -185,6 +185,29 @@ CVnClassification *CVnMerge::FindInMap(const CVnClassification &_classify)
 	return nullptr;
 }
 
+void CVnMerge::RemoveMark(std::string& _text, const string _mark)
+{
+	std::string mark = _mark;
+	unsigned int nSize = mark.size();
+	while(1)
+	{
+		unsigned int pos = _text.find(mark);
+		if(pos == string::npos)
+		{
+			return;
+		}
+
+		_text.erase(pos, nSize);
+	}
+}
+
+void CVnMerge::Format(std::string& _text)
+{
+	RemoveMark(_text, "\r");
+	RemoveMark(_text, "\n");
+	RemoveMark(_text, " ");
+}
+
 int CVnMerge::ParseHtmlFile(const string &file,
 							std::list<CVnClassification *> &lstClassification)
 {
@@ -268,6 +291,8 @@ int CVnMerge::ParseHtmlString(const string &html,
 			}
 			else
 			{
+				Format(tmpText);
+
 				if (!bLastNewIsClass)
 				{
 					if (pNewItem->m_label.empty())
