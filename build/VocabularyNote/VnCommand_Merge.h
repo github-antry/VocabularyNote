@@ -75,7 +75,7 @@ protected:
 	//
 	string readFileIntoString(const char *filename);
 
-	void WriteToHtml(const std::list<CVnClassification *> &lstClassifyResult);
+	void WriteToHtml(const std::list<CVnClassification *> &lstClassifyResult, const std::string _file);
 	void WriteToHtml_Header(ofstream &result);
 	void WriteToHtml_DT_H3(ofstream &result,
 												 string add_date,
@@ -105,6 +105,9 @@ protected:
 
 	void Format(std::string& _text);
 	void RemoveMark(std::string& _text, const string _mark);
+
+	std::string GetCurrentDir();
+    std::string GetDateTimeString();
 
   private:
 	std::map<std::string, CVnItem *> m_mapItem;

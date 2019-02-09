@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <direct.h>
+#include <time.h>
 
 #include "VnCommand_Merge.h"
 #include "VnCommonDef.h"
@@ -17,6 +19,8 @@ using namespace htmlcxx;
 #define DL_END(out)          \
 	WriteToHtml_DL_END(out); \
 	}
+
+#define MAX_PATH 260
 
 CVnMerge::CVnMerge(void)
 {
@@ -80,22 +84,36 @@ string UTF82WCS(const char *szU8)
 	return wstring2string(wtmp);
 }
 
+std::string CVnMerge::GetDateTimeString()
+{
+	time_t tt = time(NULL);
+
+	char tmp[64];
+	strftime(tmp, sizeof(tmp), "%Y-%m-%d_%H_%M_%S",localtime(&tt) );
+
+	string str;
+	str = tmp;
+
+	return std::move(str);
+}
+
 void CVnMerge::Run(const struct _INSTRUCTIONS_ &ins)
 {
-	string fileA = "E:\\W009_GitHub\\GanttSchedule\\bookmarks_2019_2_1.html";
-	string fileB = "E:\\W009_GitHub\\GanttSchedule\\bookmarks_2019_2_1.html";
+	std::string strPath = GetCurrentDir();
 
-	std::list<CVnClassification *> lstClassifyA; //need to free memory
-	std::list<CVnClassification *> lstClassifyB; //need to free memory
-	ParseHtmlFile(fileA, lstClassifyA);
-	//ParseHtmlFile(fileB, lstClassifyB);
+	std::list<std::string> lstFiles;
+	GetAwOSToolInstance()->GetFiles(lstFiles, strPath, "html");
+	for(auto itrFile=lstFiles.begin(); itrFile!=lstFiles.end(); ++itrFile)
+	{
+		std::list<CVnClassification *> lstClassify; //need to free memory
+		ParseHtmlFile(*itrFile, lstClassify);
+		Mix(lstClassify);
+	}
 
-	Mix(lstClassifyA);
-	Mix(lstClassifyB);
-
-	WriteToHtml(m_lstResult);
-
-	//std::cout << dom << endl;
+	if(m_lstResult.size() > 0)
+	{
+		WriteToHtml(m_lstResult, strPath+"\\bookmark_merge_"+GetDateTimeString()+".html");
+	}
 }
 
 void CVnMerge::Mix(const std::list<CVnClassification *> &lstClassify)
@@ -329,9 +347,19 @@ string CVnMerge::readFileIntoString(const char *filename)
 	return buf.str();
 }
 
-void CVnMerge::WriteToHtml(const std::list<CVnClassification *> &lstClassifyResult)
+std::string CVnMerge::GetCurrentDir()
 {
-	string file = ".\\result.html";
+	char buffer[MAX_PATH];
+	_getcwd(buffer, MAX_PATH);
+
+	std::string strPath = buffer;
+
+	return std::move(strPath);
+}
+
+void CVnMerge::WriteToHtml(const std::list<CVnClassification *> &lstClassifyResult, const std::string _file)
+{
+	string file = _file;
 	ofstream result;
 	result.open(file, ios::out | ios::trunc);
 

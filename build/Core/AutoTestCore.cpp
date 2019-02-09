@@ -1,7 +1,7 @@
 #include "AutoTestCore.h"
 #include "UnitTestCaseBase.h"
 #include "UnitTestResultMacro.h"
-#include "CxAutoClean.h"
+#include "AwAutoClean.h"
 
 ///
 CAutoTestCore* CAutoTestCore::s_pInstance = nullptr;

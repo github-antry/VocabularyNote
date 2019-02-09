@@ -199,7 +199,7 @@ template<class T>
 class CPtrListAutoClean  
 {
 public:
-	CPtrListAutoClean(CPtrList& lst):m_list(lst){m_b = false;}
+	CPtrListAutoClean(std::list<T*>& lst):m_list(lst){m_b = false;}
 	virtual ~CPtrListAutoClean()
 	{
 		if (!m_b)
@@ -218,50 +218,6 @@ public:
 	void Terminate(){m_b = true;}
 
 private:
-	CPtrList&   m_list;
+	std::list<T*>&   m_list;
 	bool		m_b;
-};
-
-class CVARIANTArrayAutoClean  
-{
-public:
-	CVARIANTArrayAutoClean(VARIANT*& pVar,int nNum):m_pVar(pVar),m_nNum(nNum){m_b = false;}
-	virtual ~CVARIANTArrayAutoClean()
-	{
-		if (!m_b)
-		{
-			if(m_pVar == NULL || m_nNum == 0) return;
-			for(int i=0;i<m_nNum;i++)
-			{
-				VariantClear(&m_pVar[i]);
-			}
-			delete []m_pVar;
-		}
-	}
-
-	void Terminate(){m_b = true;}
-	
-private:
-	VARIANT*&	m_pVar;
-	int			m_nNum;
-	bool		m_b;
-};
-
-class CModuleAutoClean  
-{
-public:
-	CModuleAutoClean(HMODULE& hLib):m_hLib(hLib){m_b = false;}
-	virtual ~CModuleAutoClean()
-	{
-		if (!m_b && m_hLib != NULL)
-		{
-			::FreeLibrary(m_hLib);
-			m_hLib = NULL;
-		}
-	}
-	void Terminate(){m_b = true;}
-	
-private:
-	bool		m_b;
-	HMODULE&	m_hLib;
 };
