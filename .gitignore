@@ -73,3 +73,4 @@ build/Win32/Debug/Intermediate/AutoUnitTestTool/vc100.pdb
 *.tlog
 *.log
 *.manifest
+build/VocabularyNote.suo
